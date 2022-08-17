@@ -16,6 +16,7 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 # Application definition
 ADMIN_URL="admin/"
+
 INSTALLED_APPS = [
     "django.contrib.admin",
     "django.contrib.auth",
@@ -24,6 +25,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     # ---- Our apps ----
+    "django_src.apps.api.apps.ApiConfig",
     # ---- Third party ----
     # API REST
     "rest_framework",
