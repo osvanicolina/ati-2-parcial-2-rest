@@ -10,6 +10,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent.parent
 # Default primary key field type
 # https://docs.djangoproject.com/en/stable/ref/settings/#default-auto-field
 
+SECRET_KEY = env("SECRET_KEY")  # noqa F405
+
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 # Application definition
@@ -123,7 +125,6 @@ SPECTACULAR_SETTINGS = {
     # OTHER SETTINGS
 }
 
-
-
 # https://pypi.org/project/django-cors-headers/
 CORS_ALLOW_ALL_ORIGINS = True
+

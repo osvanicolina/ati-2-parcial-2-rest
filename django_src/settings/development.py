@@ -22,9 +22,6 @@ env.read_env(str(ENV_DIR / "postgres"))  # noqa F405
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = env("SECRET_KEY")  # noqa F405
-
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
@@ -37,3 +34,19 @@ STATICFILES_DIRS = [str(BASE_DIR / "static")]  # noqa F405
 # https://overiq.com/django-1-10/handling-media-files-in-django/
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")  # noqa F405
 MEDIA_URL = "/media/"
+
+LOGGING = {
+    "version": 1,
+    "disable_existing_loggers": False,
+    "handlers": {
+        "console": {
+            "class": "logging.StreamHandler",
+        },
+    },
+    "loggers": {
+        "django": {
+            "handlers": ["console"],
+            "level": "DEBUG",
+        },
+    },
+}
