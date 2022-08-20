@@ -14,5 +14,3 @@ release:
   image: web
   command:
     - bash release-tasks.sh
-run:
-  web: gunicorn --log-level DEBUG --bind 0.0.0.0:$PORT django_src.wsgi
