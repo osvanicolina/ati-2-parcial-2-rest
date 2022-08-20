@@ -5,7 +5,9 @@ setup:
       as: DATABASE
 build:
   docker:
-    web: ./docker/production/Dockerfile
+    web: ./docker/heroku/Dockerfile.web
+  config:
+    REPOID: diegosanchezp/django-boilerplate-test
 release:
   image: web
   command:
