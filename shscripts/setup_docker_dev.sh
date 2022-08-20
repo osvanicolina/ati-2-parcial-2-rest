@@ -9,6 +9,8 @@ VENV_DIR=.venv
 python -m venv "$VENV_DIR" && \
 # Make a cache folder for python dependencies
 mkdir "$PIPCACHE_DIR"
+# create static dir
+mkdir ./static
 # Activate virtual enviroment
 source "$VENV_DIR/bin/activate" && \
 # Install pipenv first

@@ -1,27 +1,29 @@
-import dj_database_url
-import django_heroku
-
 from .base import *  # noqa
+from django.core.management.utils import get_random_secret_key
+import os
 
 # Activate Django-Heroku. This line should always be last
 # beacuse the locals function reads all of the variables
 # defined in this file
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = env("SECRET_KEY")  # noqa F405
+#https://stackoverflow.com/a/59758479
+SECRET_KEY = env('SECRET_KEY', cast=(
+    str, get_random_secret_key()
+)) # noqa F405
 
-DATABASES = {"default": dj_database_url.config(conn_max_age=600)}  # noqa F405
+# https://docs.djangoproject.com/en/stable/ref/settings/#databases
+DATABASES = {"default": env.db("DATABASE_URL")}
+DATABASES["default"]["ATOMIC_REQUESTS"] = True
 
 # https://stackoverflow.com/questions/70508568/django-csrf-trusted-origins-not-working-as-expected
 CSRF_TRUSTED_ORIGINS = [
-    "https://distribuidor-dj.herokuapp.com",
     "https://*.herokuapp.com",
 ]
 
 # Danger
 ALLOWED_HOSTS = ["*"]
 
-STATICFILES_STORAGE = "distribuidor_dj.storage.WhiteNoiseStaticFilesStorage"
+STATICFILES_STORAGE = "django_src.storage.WhiteNoiseStaticFilesStorage"
 
 
 LOGGING = {
@@ -39,11 +41,3 @@ LOGGING = {
         },
     },
 }
-
-django_heroku.settings(
-    locals(),
-    databases=False,
-    test_runner=False,
-    staticfiles=False,
-    logging=False,
-)

@@ -2,15 +2,17 @@ from pathlib import Path
 
 import environ
 
-env = environ.Env()
+from django.core.management.utils import get_random_secret_key
+
+env = environ.Env(
+    SECRET_KEY=(str,get_random_secret_key())
+)
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/stable/ref/settings/#default-auto-field
-
-SECRET_KEY = env("SECRET_KEY")  # noqa F405
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
@@ -110,10 +112,6 @@ STATICFILES_FINDERS = [
 STATIC_ROOT = str(BASE_DIR / "staticfiles")  # noqa F405
 # https://docs.djangoproject.com/en/dev/ref/settings/#static-url
 STATIC_URL = "/static/"
-
-# https://docs.djangoproject.com/en/stable/ref/settings/#databases
-DATABASES = {"default": env.db("DATABASE_URL")}
-DATABASES["default"]["ATOMIC_REQUESTS"] = True
 
 REST_FRAMEWORK = {
     # YOUR SETTINGS
