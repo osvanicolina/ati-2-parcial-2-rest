@@ -1,5 +1,4 @@
 {
-  "name": "distribuidor-dj",
   "description": "django boilerplate by diego",
   "stack":"container",
   "addons": [
@@ -9,6 +8,13 @@
     "SECRET_KEY": {
         "description": "A secret key for verifying the integrity of signed cookies.",
         "generator": "secret"
+    },
+    "DJANGO_SETTINGS_MODULE": {
+      "description": "Production settings module of django to use",
+      "value": "django_src.settings.heroku"
     }
-  }
+  },
+  "keywords": [
+    "django"
+  ]
 }

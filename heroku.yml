@@ -3,7 +3,7 @@ setup:
   addons:
     - plan: heroku-postgresql:hobby-dev
       as: DATABASE
-  config: 
+  config:
     DJANGO_SETTINGS_MODULE: django_src.settings.heroku
 build:
   docker:
