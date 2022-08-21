@@ -61,5 +61,5 @@ jobs:
       -
         name: Release to heroku
         run: |
-          heroku container:push web --app ${{ env.app_name }} --arg REPOID=${{ github.repository }} --context-path .
+          heroku container:push web --app ${{ env.app_name }} --recursive --arg REPOID=${{ github.repository }} --context-path .
           heroku container:release web --app ${{ env.app_name }}
