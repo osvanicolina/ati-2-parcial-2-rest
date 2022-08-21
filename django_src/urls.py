@@ -9,9 +9,8 @@ from drf_spectacular.views import SpectacularAPIView, SpectacularSwaggerView
 from rest_framework.authtoken.views import obtain_auth_token
 
 urlpatterns = [
-    path("", RedirectView.as_view(pattern_name="empresa:business-list"), name="home"),
+    path("", RedirectView.as_view(pattern_name="admin:index"), name="home"),
     #path('i18n/', include('django.conf.urls.i18n')),
-
     # Django Admin, use {% url 'admin:index' %}
     path(settings.ADMIN_URL, admin.site.urls),
 
