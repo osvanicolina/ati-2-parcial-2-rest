@@ -3,7 +3,7 @@
 # https://docs.docker.com/develop/develop-images/multistage-build/
 
 # --- PYTHON BUILD --- #
-FROM python:3.10.5 AS djangoapp
+FROM python:3.10.6 AS djangoapp
 # Prevents Python from writing pyc files to disc
 ENV PYTHONDONTWRITEBYTECODE=1
 # Prevents Python from buffering stdout and stderr
