@@ -11,6 +11,13 @@ These system dependencies are required, **Linux OS** is preferred.
 
 ## Setup
 
+If you are using Linux, put this into your bashrc `.bashrc` OR `.zhsrc`, it's needed for the file permissions.
+
+```bash
+export UID=$(id -u)
+export GID=$(id -g)
+```
+
 Run this command, to setup the development environment
 
 ```bash
