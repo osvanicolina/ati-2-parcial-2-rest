@@ -1,41 +1,12 @@
 from rest_framework.response import Response
 from rest_framework.views import APIView
+import requests
 # Create your views here.
-class ObjectItem(APIView):
-    def get(self, request, format=None):
-        return Response({
-                "id": 1,
-                "name": "Objeto"
-            })
-
-class ListItems(APIView):
+class MakeRestRequest(APIView):
     def get(self, request, format = None):
-        return Response([
-            {
-                "id": 1,
-                "name": "Primer item de lista"
-            },
-            {
-                "id": 2,
-                "name": "Segundo item de lista"
-            }
-        ])
+        url = "https://realstateapidev.herokuapp.com/properties"
+        result = requests.get(url)
 
-class NestedItem(APIView):
-    def get(self, request, format = None):
-        return Response({
-            "items_list": [
-                {
-                    "id": 1,
-                    "name": "Primer item de lista"
-                },
-                {
-                    "id": 2,
-                    "name": "Segundo item de lista"
-                }
-            ],
-            "item_object": {
-                "id": 1,
-                "name": "Objeto"
-            }
-        })
+        print(result.json())
+
+        return Response(result.json())

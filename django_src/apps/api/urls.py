@@ -8,7 +8,7 @@ from rest_framework import routers
 from django.urls import path, include
 
 from rest_framework.routers import DefaultRouter, SimpleRouter
-from .views import ObjectItem, ListItems, NestedItem
+from .views import MakeRestRequest
 from django.conf import settings
 
 if settings.DEBUG:
@@ -17,9 +17,7 @@ else:
     router = SimpleRouter()
 
 urlpatterns = [
-    path("object/", ObjectItem.as_view() , name="object"),
-    path("list/", ListItems.as_view(), name="list_items"),
-    path("nested/", NestedItem.as_view(), name="nested_item"), 
+    path("rest-request/", MakeRestRequest.as_view(), name="rest_request"),
     path("schema/", SpectacularAPIView.as_view(), name="schema"),
     path('auth/', include('rest_framework.urls', namespace='rest_framework')),
     path(
