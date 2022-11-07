@@ -6,7 +6,5 @@ class MakeRestRequest(APIView):
     def get(self, request, format = None):
         url = "https://realstateapidev.herokuapp.com/properties"
         result = requests.get(url)
-
-        print(result.json())
-
+        
         return Response(result.json())
